@@ -1,3 +1,4 @@
+using Microsoft.AspNet.Identity.EntityFramework;
 using Raya.Employee.EntityConfigurations;
 using Raya.Employee.EntityModel;
 using System;
@@ -7,7 +8,7 @@ using System.Linq;
 
 namespace Raya.Employee
 {
-    public class EmployeeContext : DbContext
+    public class EmployeeContext : IdentityDbContext<ApplicationUser>
     {
         // Your context has been configured to use a 'EmployeeContext' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 

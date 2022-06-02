@@ -12,9 +12,11 @@ namespace Raya.Employee.EntityModel
         public DateTime? BirthDate { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? ModifiedDate { get; set; }
-        public int CreatedBy { get; set; }
-        public int ModifiedBy { get; set; }
+        public string CreatedBy { get; set; }
+        public string ModifiedBy { get; set; }
         public int? departmentId { get; set; }
         public virtual Department Department { get; set; }
+        public virtual ApplicationUser  User { get; set; }
+
     }
 }

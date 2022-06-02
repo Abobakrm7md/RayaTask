@@ -51,6 +51,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
@@ -196,6 +202,7 @@
     <Compile Include="EmployeeContext.cs" />
     <Compile Include="EntityConfigurations\DepartmentEntityConfiguration.cs" />
     <Compile Include="EntityConfigurations\EmployeeEntityConfiguration.cs" />
+    <Compile Include="EntityModel\ApplicationUser.cs" />
     <Compile Include="EntityModel\Department.cs" />
     <Compile Include="EntityModel\Employee.cs" />
     <Compile Include="Forms\Login.aspx.cs">
@@ -211,6 +218,10 @@
     <Compile Include="Migrations\202206021850058_init.cs" />
     <Compile Include="Migrations\202206021850058_init.designer.cs">
       <DependentUpon>202206021850058_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206021920458_user.cs" />
+    <Compile Include="Migrations\202206021920458_user.designer.cs">
+      <DependentUpon>202206021920458_user.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -253,6 +264,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202206021850058_init.resx">
       <DependentUpon>202206021850058_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206021920458_user.resx">
+      <DependentUpon>202206021920458_user.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

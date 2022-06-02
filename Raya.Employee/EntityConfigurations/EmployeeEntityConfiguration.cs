@@ -19,7 +19,11 @@ namespace Raya.Employee.EntityConfigurations
             this.Property(x => x.BirthDate).HasColumnName("emp_birthdate");
             this.Property(x => x.CreatedDate).HasColumnName("emp_created_date");
             this.Property(x => x.ModifiedDate).HasColumnName("emp_modified_date");
-            this.HasOptional(x => x.Department).WithMany(x => x.Employees).HasForeignKey(x => x.departmentId);
+            this.HasOptional(x => x.Department).WithMany(x => x.Employees).HasForeignKey(x => x.departmentId).WillCascadeOnDelete();
+            this.HasOptional(x => x.User).WithMany().HasForeignKey(x => x.CreatedBy).WillCascadeOnDelete();
+            this.HasOptional(x => x.User).WithMany().HasForeignKey(x => x.ModifiedBy);
+
+
         }
     }
 }
