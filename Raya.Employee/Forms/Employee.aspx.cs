@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Raya.Employee.EntityModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,8 @@ namespace Raya.Employee.Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            test.Text =Session["admin"].ToString();
+            ApplicationUser userSession = (ApplicationUser)Session["user"];
+            if (userSession.IsAdmin) { }
         }
     }
 }

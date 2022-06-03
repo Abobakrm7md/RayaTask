@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Raya.Employee.EntityModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,22 +23,37 @@ namespace Raya.Employee.Forms
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            var userStore = new UserStore<IdentityUser>();
-            var userManager = new UserManager<IdentityUser>(userStore);
-            var user = userManager.Find(txt_Email.Text, txt_Password.Text);
-
-            if (user != null)
+            using (var context = new EmployeeContext())
             {
-                var usersession = Session["user"];
-                HttpContext.Current.Session.Add("admin", true);
+                var user = context.Users.FirstOrDefault(x => x.Email == txt_Email.Text);
+                if (user != null)
+                {
+                    PasswordHasher hasher = new PasswordHasher();
+                    var validatePassword = hasher.VerifyHashedPassword(user.PasswordHash, txt_Password.Text);
+                    if (validatePassword == PasswordVerificationResult.Success)
+                    {
+                        HttpContext.Current.Session.Add("user", user);
+                        Response.Redirect("~/Forms/Employee.aspx");
+                    }
+                }
 
-                Response.Redirect("~/Forms/Employee.aspx");
             }
-            else
-            {
-                lblMessage.Text = "Invalid username or password.";
+            //    var userStore = new UserStore<IdentityUser>();
+            //var userManager = new UserManager<IdentityUser>(userStore);
+            //var user = userManager.FindByEmail(txt_Email.Text);
+            //if (user != null)
+            //{
+            //    PasswordHasher hasher = new PasswordHasher();
+            //    var validatePassword = hasher.VerifyHashedPassword(user.PasswordHash, txt_Password.Text);
+            //    if (validatePassword == PasswordVerificationResult.Success)
+            //    {
+            //        HttpContext.Current.Session.Add("user", user);
+            //        Response.Redirect("~/Forms/Employee.aspx");
+            //    }
+            //}
+            dvMessage.Visible = true;
+            lblMessage.Text = "Invalid username or password.";
 
-            }
         }
 
     }

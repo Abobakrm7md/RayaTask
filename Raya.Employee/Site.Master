@@ -46,9 +46,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+                    <a>
+                    <img class="navbar-brand"  style="max-height:100px;max-width:100px;" src="Content/Images/raya.png"/>
+                    </a>
+                    <a class="navbar-brand" runat="server" href="~/Default.aspx">Home</a>
                     <a class="navbar-brand" runat="server" href="~/Forms/Register.aspx">Register</a>
-
                     <a class="navbar-brand" runat="server" href="~/Forms/Login.aspx">Login</a>
+
                 </div>
             </div>
         </div>
