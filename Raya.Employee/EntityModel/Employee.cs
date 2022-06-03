@@ -15,6 +15,9 @@ namespace Raya.Employee.EntityModel
         public string CreatedBy { get; set; }
         public string ModifiedBy { get; set; }
         public int? departmentId { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public DateTime HireDate { get; set; }
         public virtual Department Department { get; set; }
         public virtual ApplicationUser  User { get; set; }
 

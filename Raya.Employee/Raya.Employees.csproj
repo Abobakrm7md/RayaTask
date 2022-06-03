@@ -243,7 +243,12 @@
     <Compile Include="Migrations\202206021920458_user.designer.cs">
       <DependentUpon>202206021920458_user.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206032303173_updateemployee.cs" />
+    <Compile Include="Migrations\202206032303173_updateemployee.designer.cs">
+      <DependentUpon>202206032303173_updateemployee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\EmpolyeeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -288,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206021920458_user.resx">
       <DependentUpon>202206021920458_user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206032303173_updateemployee.resx">
+      <DependentUpon>202206032303173_updateemployee.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
