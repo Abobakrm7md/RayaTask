@@ -1,3 +1,4 @@
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Raya.Employee.EntityConfigurations;
 using Raya.Employee.EntityModel;
@@ -17,10 +18,14 @@ namespace Raya.Employee
         // If you wish to target a different database and/or database provider, modify the 'EmployeeContext' 
         // connection string in the application configuration file.
         public EmployeeContext()
-            : base("name=EmployeeContext")
+            : base("test")
         {
         }
 
+        public static EmployeeContext Create()
+        {
+            return new EmployeeContext();
+        }
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -31,10 +36,11 @@ namespace Raya.Employee
 
 
         }
+
         public virtual DbSet<EntityModel.Employee>  Employees { get; set; }
         public virtual DbSet<Department>  Departments { get; set; }
 
     }
-   
-    
+
+
 }

@@ -11,52 +11,52 @@ namespace Raya.Employee.Forms
 {
 
 
-    public partial class Login
+    public partial class Register
     {
 
         /// <summary>
-        /// txt_Email control.
+        /// StatusMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_Email;
+        protected global::System.Web.UI.WebControls.Literal StatusMessage;
 
         /// <summary>
-        /// txt_Password control.
+        /// Email control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_Password;
+        protected global::System.Web.UI.WebControls.TextBox Email;
 
         /// <summary>
-        /// btnLogin control.
+        /// Password control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogin;
+        protected global::System.Web.UI.WebControls.TextBox Password;
 
         /// <summary>
-        /// dvMessage control.
+        /// ConfirmPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMessage;
+        protected global::System.Web.UI.WebControls.TextBox ConfirmPassword;
 
         /// <summary>
-        /// lblMessage control.
+        /// IsAdmin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMessage;
+        protected global::System.Web.UI.WebControls.DropDownList IsAdmin;
     }
 }
