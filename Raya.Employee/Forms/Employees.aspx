@@ -61,7 +61,6 @@
                         <div>
                             <label>DepartMent</label>
                             <asp:DropDownList ID="dept" runat="server" Width="255px">
-                                <asp:ListItem Text="Select Department" Value="select" ></asp:ListItem>
                             </asp:DropDownList>
                         </div>
                         <br />
@@ -80,7 +79,7 @@
                     <asp:Button ID="AddNew" Text="AddNew" runat="server" Class="btn btn-primary" OnClick="AddNew_Click" />
                     <asp:Button ID="Update" Text="Update" runat="server" Class="btn btn-primary" OnClick="Update_Click" />
                     <asp:Button ID="Delete" Text="Delete" runat="server" Class="btn btn-danger" OnClick="Delete_Click" />
-                    <asp:Button ID="Confirm" Text="Confirm" runat="server" Class="btn btn-primary" />
+                    <asp:Button ID="Confirm" Text="Confirm" runat="server" Class="btn btn-primary" OnClick="Confirm_Click" />
 
                 </div>
             </div>

@@ -165,5 +165,18 @@ namespace Raya.Employee.Forms
             LoadEmployeeDataAndFillGridView();
             ResetControls();
         }
+
+        protected void Confirm_Click(object sender, EventArgs e)
+        {
+            int empId = int.Parse(EmpId.Text);
+            using (context = new EmployeeContext())
+            {
+                var employee = context.Employees.Find(empId);
+                employee.Confirmed = true;
+                context.SaveChanges();
+            }
+            LoadEmployeeDataAndFillGridView();
+            ResetControls();
+        }
     }
 }
