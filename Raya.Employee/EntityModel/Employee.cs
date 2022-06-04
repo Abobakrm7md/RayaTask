@@ -18,6 +18,7 @@ namespace Raya.Employee.EntityModel
         public string Address { get; set; }
         public string Phone { get; set; }
         public DateTime HireDate { get; set; }
+        public bool Confirmed { get; set; }
         public virtual Department Department { get; set; }
         public virtual ApplicationUser  User { get; set; }
 

@@ -148,7 +148,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Forms\Employee.aspx" />
+    <Content Include="Forms\Employees.aspx" />
     <Content Include="Forms\Login.aspx" />
     <Content Include="Forms\Register.aspx" />
     <Content Include="Global.asax" />
@@ -211,12 +211,12 @@
     <Compile Include="EntityModel\ApplicationUser.cs" />
     <Compile Include="EntityModel\Department.cs" />
     <Compile Include="EntityModel\Employee.cs" />
-    <Compile Include="Forms\Employee.aspx.cs">
-      <DependentUpon>Employee.aspx</DependentUpon>
+    <Compile Include="Forms\Employees.aspx.cs">
+      <DependentUpon>Employees.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Forms\Employee.aspx.designer.cs">
-      <DependentUpon>Employee.aspx</DependentUpon>
+    <Compile Include="Forms\Employees.aspx.designer.cs">
+      <DependentUpon>Employees.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -246,6 +246,10 @@
     <Compile Include="Migrations\202206032303173_updateemployee.cs" />
     <Compile Include="Migrations\202206032303173_updateemployee.designer.cs">
       <DependentUpon>202206032303173_updateemployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206041338110_addconfirmtoemployee.cs" />
+    <Compile Include="Migrations\202206041338110_addconfirmtoemployee.designer.cs">
+      <DependentUpon>202206041338110_addconfirmtoemployee.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmpolyeeModel.cs" />
@@ -296,6 +300,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206032303173_updateemployee.resx">
       <DependentUpon>202206032303173_updateemployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206041338110_addconfirmtoemployee.resx">
+      <DependentUpon>202206041338110_addconfirmtoemployee.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -33,7 +33,7 @@ namespace Raya.Employee.Forms
                     if (validatePassword == PasswordVerificationResult.Success)
                     {
                         HttpContext.Current.Session.Add("user", user);
-                        Response.Redirect("~/Forms/Employee.aspx");
+                        Response.Redirect("~/Forms/Employees.aspx");
                     }
                 }
 

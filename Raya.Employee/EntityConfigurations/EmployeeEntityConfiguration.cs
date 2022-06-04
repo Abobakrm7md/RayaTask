@@ -22,6 +22,7 @@ namespace Raya.Employee.EntityConfigurations
             this.Property(x => x.Address).HasColumnName("emp_address");
             this.Property(x => x.Phone).HasColumnName("emp_phone");
             this.Property(x => x.HireDate).HasColumnName("emp_hire_date");
+            this.Property(x => x.Confirmed).HasColumnName("emp_cnfirmed");
             this.HasOptional(x => x.Department).WithMany(x => x.Employees).HasForeignKey(x => x.departmentId).WillCascadeOnDelete();
             this.HasOptional(x => x.User).WithMany().HasForeignKey(x => x.CreatedBy).WillCascadeOnDelete();
             this.HasOptional(x => x.User).WithMany().HasForeignKey(x => x.ModifiedBy);

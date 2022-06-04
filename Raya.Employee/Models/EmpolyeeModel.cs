@@ -18,6 +18,7 @@ namespace Raya.Employee.Models
         public string Phone { get; set; }
         public string Department { get; set; }
         public DateTime? HireDate { get; set; }
+        public string Confirmed { get; set; }
 
     }
 }
