@@ -38,22 +38,9 @@ namespace Raya.Employee.Forms
                 }
 
             }
-            //    var userStore = new UserStore<IdentityUser>();
-            //var userManager = new UserManager<IdentityUser>(userStore);
-            //var user = userManager.FindByEmail(txt_Email.Text);
-            //if (user != null)
-            //{
-            //    PasswordHasher hasher = new PasswordHasher();
-            //    var validatePassword = hasher.VerifyHashedPassword(user.PasswordHash, txt_Password.Text);
-            //    if (validatePassword == PasswordVerificationResult.Success)
-            //    {
-            //        HttpContext.Current.Session.Add("user", user);
-            //        Response.Redirect("~/Forms/Employee.aspx");
-            //    }
-            //}
             dvMessage.Visible = true;
             lblMessage.Text = "Invalid username or password.";
-
+        
         }
 
     }
