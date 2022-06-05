@@ -25,7 +25,7 @@ namespace Raya.Employee.Forms
         {
             using (var context = new EmployeeContext())
             {
-                var user = context.Users.FirstOrDefault(x => x.Email == txt_Email.Text);
+                var user = context.Users.FirstOrDefault(x => x.UserName == txt_UserName.Text);
                 if (user != null)
                 {
                     PasswordHasher hasher = new PasswordHasher();

@@ -19,19 +19,30 @@ namespace Raya.Employee.Forms
 
         protected void CreateUser_Click(object sender, EventArgs e)
         {
-            using (var context = new EmployeeContext())
+            try
             {
-                var user = new ApplicationUser()
+                using (var context = new EmployeeContext())
                 {
-                    Email = Email.Text,
-                    UserName = Email.Text,
-                    IsAdmin = bool.Parse(IsAdmin.SelectedValue.ToString())
-                };
-                PasswordHasher hasher = new PasswordHasher();
-                user.PasswordHash = hasher.HashPassword(Password.Text);
-                context.Users.Add(user);
-                context.SaveChanges();
-                Response.Redirect("~/Forms/Login.aspx");
+                    var user = new ApplicationUser()
+                    {
+                        Email = TxtBoxEmail.Text,
+                        PhoneNumber = TxtBoxPhoneNumber.Text,
+                        FirstName = txtboxFirstName.Text,
+                        LastName = txtboxSecondeName.Text,
+                        UserName = UserName.Text,
+                        IsAdmin = bool.Parse(IsAdmin.SelectedValue.ToString())
+                    };
+                    PasswordHasher hasher = new PasswordHasher();
+                    user.PasswordHash = hasher.HashPassword(txtPassword.Text);
+                    context.Users.Add(user);
+                    context.SaveChanges();
+                    Response.Redirect("~/Forms/Login.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                dvMessage.Visible = true;
+                lblMessage.Text = ex.Message;
             }
         }
     }

@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>bin\roslyn\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -253,6 +256,10 @@
     <Compile Include="Migrations\202206041338110_addconfirmtoemployee.designer.cs">
       <DependentUpon>202206041338110_addconfirmtoemployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206051554502_AddFirstNameAndLastName.cs" />
+    <Compile Include="Migrations\202206051554502_AddFirstNameAndLastName.designer.cs">
+      <DependentUpon>202206051554502_AddFirstNameAndLastName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmpolyeeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -305,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206041338110_addconfirmtoemployee.resx">
       <DependentUpon>202206041338110_addconfirmtoemployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206051554502_AddFirstNameAndLastName.resx">
+      <DependentUpon>202206051554502_AddFirstNameAndLastName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

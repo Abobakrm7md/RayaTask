@@ -14,16 +14,20 @@ namespace Raya.Employee.Forms
         EmployeeContext context;
         protected void Page_Load(object sender, EventArgs e)
         {
-            ValidateUserTypeToDisableEnableControls();
-            LoadEmployeeDataAndFillGridView();
-            LoadDepartment();
+            if (!IsPostBack)
+            {
+                ValidateUserTypeToDisableEnableControls();
+                LoadEmployeeDataAndFillGridView();
+                LoadDepartment();
+            }
         }
 
         private void ValidateUserTypeToDisableEnableControls()
         {
             ApplicationUser userSession = (ApplicationUser)Session["user"];
             if (userSession != null && userSession.IsAdmin) { Confirm.Visible = true; }
-            else { Confirm.Visible = false; }
+            else { Confirm.Visible = false; 
+                Response.Redirect("~/Forms/Login.aspx");}
         }
 
         private void LoadEmployeeDataAndFillGridView()
@@ -54,13 +58,16 @@ namespace Raya.Employee.Forms
         }
         private void LoadDepartment()
         {
-            using(context = new EmployeeContext())
+            if (!IsPostBack)
             {
-                var depts = context.Departments.ToList();
-                dept.DataSource = depts;
-                dept.DataValueField = "Id";
-                dept.DataTextField = "Name";
-                dept.DataBind();
+                using (context = new EmployeeContext())
+                {
+                    var depts = context.Departments.Distinct().ToList();
+                    dept.DataSource = depts;
+                    dept.DataValueField = "Id";
+                    dept.DataTextField = "Name";
+                    dept.DataBind();
+                }
             }
         }
 
@@ -73,11 +80,13 @@ namespace Raya.Employee.Forms
         {
             //init employee 
             ApplicationUser userSession = (ApplicationUser)Session["user"];
+            if(userSession == null)
+                Response.Redirect("~/Forms/Login.aspx");
             var emp = new EntityModel.Employee()
             {
-                Name = Name.Text,
-                Address = Address.Text,
-                Phone = Phone.Text,
+                Name = txt_Name.Text,
+                Address = txt_Address.Text,
+                Phone = txt_Phone.Text,
                 BirthDate = DateTime.Now,
                 HireDate = DateTime.Now,
                 departmentId = int.Parse(dept.SelectedValue.ToString()),
@@ -95,11 +104,11 @@ namespace Raya.Employee.Forms
         }
         private void ResetControls()
         {
-            Name.Text =string.Empty;
-            Phone.Text =string.Empty;
+            txt_Name.Text =string.Empty;
+            txt_Phone.Text =string.Empty;
             BirthDate.Text =string.Empty;
             HireDate.Text =string.Empty;
-            Address.Text =string.Empty;
+            txt_Address.Text =string.Empty;
         }
 
         protected void Reset_Click(object sender, EventArgs e)
@@ -123,11 +132,11 @@ namespace Raya.Employee.Forms
         private void InitializeConrolesByEmployee(EntityModel.Employee employee)
         {
             EmpId.Text = employee.Id.ToString();
-            Name.Text = employee.Name;
-            Phone.Text = employee.Phone;
+            txt_Name.Text = employee.Name;
+            txt_Phone.Text = employee.Phone;
             BirthDate.Text = employee.BirthDate.ToString();
             HireDate.Text = employee.HireDate.ToString();
-            Address.Text = employee.Address;
+            txt_Address.Text = employee.Address;
             dept.SelectedValue = employee.departmentId.ToString();
         }
 
@@ -138,9 +147,9 @@ namespace Raya.Employee.Forms
             using( context = new EmployeeContext())
             {
                 var employee = context.Employees.Find(empId);
-                employee.Name = Name.Text;
-                employee.Address = Address.Text;
-                employee.Phone = Phone.Text;
+                employee.Name = txt_Name.Text;
+                employee.Address = txt_Address.Text;
+                employee.Phone = txt_Phone.Text;
                 employee.BirthDate = DateTime.Now;
                 employee.HireDate = DateTime.Now;
                 employee.departmentId = int.Parse(dept.SelectedValue.ToString());

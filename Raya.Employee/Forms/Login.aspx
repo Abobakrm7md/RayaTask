@@ -15,11 +15,11 @@
                         <div class="panel-heading">Register information</div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <asp:Label runat="server" CssClass="col-md-2 control-label">Email</asp:Label>
+                                <asp:Label runat="server" CssClass="col-md-2 control-label">UserName</asp:Label>
                                 <div class="col-md-10">
-                                    <asp:TextBox runat="server" ID="txt_Email" CssClass="form-control" />
-                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_Email"
-                                        CssClass="text-danger" ErrorMessage="The email field is required." />
+                                    <asp:TextBox runat="server" ID="txt_UserName" CssClass="form-control" />
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_UserName"
+                                        CssClass="text-danger" ErrorMessage="The user name field is required." />
                                 </div>
                             </div>
                             <div class="form-group">

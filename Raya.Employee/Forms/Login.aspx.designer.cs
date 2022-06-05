@@ -24,13 +24,13 @@ namespace Raya.Employee.Forms
         protected global::System.Web.UI.WebControls.PlaceHolder ErrorMessage;
 
         /// <summary>
-        /// txt_Email control.
+        /// txt_UserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_Email;
+        protected global::System.Web.UI.WebControls.TextBox txt_UserName;
 
         /// <summary>
         /// txt_Password control.
