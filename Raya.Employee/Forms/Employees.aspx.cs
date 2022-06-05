@@ -25,9 +25,10 @@ namespace Raya.Employee.Forms
         private void ValidateUserTypeToDisableEnableControls()
         {
             ApplicationUser userSession = (ApplicationUser)Session["user"];
-            if (userSession != null && userSession.IsAdmin) { Confirm.Visible = true; }
+            if(userSession == null) { Response.Redirect("~/Forms/Login.aspx"); }
+            if (userSession.IsAdmin) { Confirm.Visible = true; }
             else { Confirm.Visible = false; 
-                Response.Redirect("~/Forms/Login.aspx");}
+               }
         }
 
         private void LoadEmployeeDataAndFillGridView()
