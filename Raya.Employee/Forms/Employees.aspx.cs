@@ -99,7 +99,7 @@ namespace Raya.Employee.Forms
             EmpId.Text = employee.Id.ToString();
             txt_Name.Text = employee.Name;
             txt_Phone.Text = employee.Phone;
-            BirthDate.Text = employee.BirthDate.ToString();
+            BirthDate.Text = employee.BirthDate.Value.ToString("dd/MM/yyyy");
             HireDate.Text = employee.HireDate.ToString();
             txt_Address.Text = employee.Address;
             dept.SelectedValue = employee.departmentId.ToString();
@@ -126,7 +126,7 @@ namespace Raya.Employee.Forms
 
         protected void Delete_Click(object sender, EventArgs e)
         {
-            int empId = int.Parse(EmpId.Text.ToString());
+            int empId = Convert.ToInt32((sender as LinkButton).CommandArgument);
             var employee = RepositoryBase<EntityModel.Employee>.GetById(empId);
             if (employee == null)
                 return;

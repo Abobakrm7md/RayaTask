@@ -34,6 +34,12 @@
                                                     CommandArgument='<%# Eval("EmployeeId") %>' OnClick="EmpSelected_Click"></asp:LinkButton>
                                             </ItemTemplate>
                                         </asp:TemplateField>
+                                         <asp:TemplateField>
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="EmpDeleted" Text="Delete" runat="server"
+                                                    CommandArgument='<%# Eval("EmployeeId") %>' OnClientClick="return UserDeleteConfirmation();" OnClick="Delete_Click"></asp:LinkButton>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                     </Columns>
                                 </asp:GridView>
                             </div>
@@ -89,7 +95,7 @@
                             <div class="form-group">
                                 <asp:Label runat="server" CssClass="col-md-2 control-label">Birth Date</asp:Label>
                                 <div class="col-md-10">
-                                    <asp:TextBox ID="BirthDate" runat="server" TextMode="Date"  CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="BirthDate" runat="server" TextMode="Date"   CssClass="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator runat="server" ControlToValidate="BirthDate" ValidationGroup="EmpDate" CssClass="text-danger" ErrorMessage="The Birth Date field is required." />
                                 </div>
                             </div>
@@ -106,12 +112,18 @@
                     <asp:Button ID="Reset" Text="Reset" runat="server" Class="btn btn-primary" OnClick="Reset_Click" />
                     <asp:Button ID="AddNew" ValidationGroup="EmpDate" Text="AddNew" runat="server" Class="btn btn-primary" OnClick="AddNew_Click" />
                     <asp:Button ID="Update" Text="Update" ValidationGroup="EmpDate" runat="server" Class="btn btn-primary" OnClick="Update_Click" />
-                    <asp:Button ID="Delete" Text="Delete" runat="server" Class="btn btn-danger" OnClick="Delete_Click" />
                     <asp:Button ID="Confirm" Text="Confirm" runat="server" Class="btn btn-primary" OnClick="Confirm_Click" />
 
                 </div>
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        function UserDeleteConfirmation() {
+            Resu = confirm("Are you sure you want to delete this Employee?");
+            return Resu;
+        }
+    </script>
 
 </asp:Content>
