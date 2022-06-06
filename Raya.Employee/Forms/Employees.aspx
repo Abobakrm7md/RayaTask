@@ -51,7 +51,7 @@
                                 <asp:Label runat="server" CssClass="col-md-2 control-label">Name</asp:Label>
                                 <div class="col-md-10">
                                     <asp:TextBox runat="server" ID="txt_Name" CssClass="form-control" />
-                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_Name"
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_Name" ValidationGroup="EmpDate"
                                         CssClass="text-danger" ErrorMessage="The user name field is required." />
                                 </div>
                             </div>
@@ -59,14 +59,14 @@
                                 <asp:Label runat="server" CssClass="col-md-2 control-label">Address</asp:Label>
                                 <div class="col-md-10">
                                     <asp:TextBox runat="server" ID="txt_Address" CssClass="form-control" />
-                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_Address" CssClass="text-danger" ErrorMessage="The address field is required." />
+                                    <asp:RequiredFieldValidator runat="server"  ControlToValidate="txt_Address" CssClass="text-danger" ValidationGroup="EmpDate" ErrorMessage="The address field is required." />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <asp:Label runat="server" CssClass="col-md-2 control-label">Phone</asp:Label>
                                 <div class="col-md-10">
                                     <asp:TextBox runat="server" ID="txt_Phone" CssClass="form-control" />
-                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_Phone" CssClass="text-danger" ErrorMessage="The phone field is required." />
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_Phone" ValidationGroup="EmpDate" CssClass="text-danger" ErrorMessage="The phone field is required." />
                                 </div>
                             </div>
                             <br />
@@ -74,7 +74,7 @@
                                 <asp:Label runat="server" CssClass="col-md-2 control-label">Department</asp:Label>
                                 <div class="col-md-10">
                                     <asp:DropDownList ID="dept" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
-                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="dept" CssClass="text-danger" ErrorMessage="The deparment field is required." />
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="dept" ValidationGroup="EmpDate" CssClass="text-danger" ErrorMessage="The deparment field is required." />
                                 </div>
                             </div>
                             <br />
@@ -82,7 +82,7 @@
                                 <asp:Label runat="server" CssClass="col-md-2 control-label">Hire Data</asp:Label>
                                 <div class="col-md-10">
                                     <asp:TextBox ID="HireDate" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
-                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="HireDate" CssClass="text-danger" ErrorMessage="The Hire Date field is required." />
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="HireDate" ValidationGroup="EmpDate" CssClass="text-danger" ErrorMessage="The Hire Date field is required." />
                                 </div>
                             </div>
                             <br />
@@ -90,7 +90,7 @@
                                 <asp:Label runat="server" CssClass="col-md-2 control-label">Birth Date</asp:Label>
                                 <div class="col-md-10">
                                     <asp:TextBox ID="BirthDate" runat="server" TextMode="Date"  CssClass="form-control"></asp:TextBox>
-                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="BirthDate" CssClass="text-danger" ErrorMessage="The Birth Date field is required." />
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="BirthDate" ValidationGroup="EmpDate" CssClass="text-danger" ErrorMessage="The Birth Date field is required." />
                                 </div>
                             </div>
                             <br />
@@ -104,8 +104,8 @@
 
                     <br />
                     <asp:Button ID="Reset" Text="Reset" runat="server" Class="btn btn-primary" OnClick="Reset_Click" />
-                    <asp:Button ID="AddNew" Text="AddNew" runat="server" Class="btn btn-primary" OnClick="AddNew_Click" />
-                    <asp:Button ID="Update" Text="Update" runat="server" Class="btn btn-primary" OnClick="Update_Click" />
+                    <asp:Button ID="AddNew" ValidationGroup="EmpDate" Text="AddNew" runat="server" Class="btn btn-primary" OnClick="AddNew_Click" />
+                    <asp:Button ID="Update" Text="Update" ValidationGroup="EmpDate" runat="server" Class="btn btn-primary" OnClick="Update_Click" />
                     <asp:Button ID="Delete" Text="Delete" runat="server" Class="btn btn-danger" OnClick="Delete_Click" />
                     <asp:Button ID="Confirm" Text="Confirm" runat="server" Class="btn btn-primary" OnClick="Confirm_Click" />
 

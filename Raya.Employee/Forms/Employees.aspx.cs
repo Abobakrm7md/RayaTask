@@ -1,5 +1,6 @@
 ﻿using Raya.Employee.EntityModel;
 using Raya.Employee.Models;
+using Raya.Employee.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,6 @@ namespace Raya.Employee.Forms
 {
     public partial class Employees : System.Web.UI.Page
     {
-        EmployeeContext context;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -33,42 +33,19 @@ namespace Raya.Employee.Forms
 
         private void LoadEmployeeDataAndFillGridView()
         {
-            using (context = new EmployeeContext())
-            {
-                var result = (from emp in context.Employees
-                              join dept in context.Departments on emp.departmentId equals dept.Id
-                              from user in context.Users.Where(x => x.Id == emp.CreatedBy || x.Id == emp.ModifiedBy)
-                              select new EmpolyeeModel
-                              {
-                                  EmployeeId = emp.Id,
-                                  Address = emp.Address,
-                                  Phone = emp.Phone,
-                                  EmpName = emp.Name,
-                                  BirthDate = emp.BirthDate,
-                                  HireDate = emp.HireDate,
-                                  Department = dept.Name,
-                                  CreatedDate = emp.CreatedDate,
-                                  CreateBy = user.Email,
-                                  ModifiedDate = emp.ModifiedDate,
-                                  ModifiedBy = user.Email,
-                                  Confirmed = emp.Confirmed == true?"Confirmed":"NotConfirmed"
-                              }).ToList();
-                grdEmployee.DataSource = result;
-                grdEmployee.DataBind();
-            }
+            var employees = Repository.EmployeeQuery.GetEmployees();
+            grdEmployee.DataSource = employees;
+            grdEmployee.DataBind();
         }
         private void LoadDepartment()
         {
             if (!IsPostBack)
             {
-                using (context = new EmployeeContext())
-                {
-                    var depts = context.Departments.Distinct().ToList();
-                    dept.DataSource = depts;
-                    dept.DataValueField = "Id";
-                    dept.DataTextField = "Name";
-                    dept.DataBind();
-                }
+               var departments = RepositoryBase<Department>.Get();
+                dept.DataSource = departments;
+                dept.DataValueField = "Id";
+                dept.DataTextField = "Name";
+                dept.DataBind();
             }
         }
 
@@ -96,12 +73,7 @@ namespace Raya.Employee.Forms
                 ModifiedBy = userSession.Id,
                 ModifiedDate = DateTime.Now,
             };
-            //save emp
-            using (context = new EmployeeContext())
-            {
-                context.Employees.Add(emp);
-                context.SaveChanges();
-            }
+            RepositoryBase<EntityModel.Employee>.Add(emp);
         }
         private void ResetControls()
         {
@@ -119,16 +91,8 @@ namespace Raya.Employee.Forms
         protected void EmpSelected_Click(object sender , EventArgs e)
         {
             int empId = Convert.ToInt32((sender as LinkButton).CommandArgument);
-            var employee = GetEmploee(empId);
+            var employee = RepositoryBase<EntityModel.Employee>.GetById(empId);
             InitializeConrolesByEmployee(employee);
-        }
-        private EntityModel.Employee GetEmploee(int empId)
-        {
-            using (var context = new EmployeeContext())
-            {
-                var emp = context.Employees.Find(empId);
-                return emp;
-            }
         }
         private void InitializeConrolesByEmployee(EntityModel.Employee employee)
         {
@@ -145,20 +109,17 @@ namespace Raya.Employee.Forms
         {
             ApplicationUser userSession = (ApplicationUser)Session["user"];
             int empId = int.Parse(EmpId.Text.ToString());
-            using( context = new EmployeeContext())
-            {
-                var employee = context.Employees.Find(empId);
-                employee.Name = txt_Name.Text;
-                employee.Address = txt_Address.Text;
-                employee.Phone = txt_Phone.Text;
-                employee.BirthDate = DateTime.Now;
-                employee.HireDate = DateTime.Now;
-                employee.departmentId = int.Parse(dept.SelectedValue.ToString());
-                employee.ModifiedBy = userSession.Id;
-                employee.ModifiedDate = DateTime.Now;
-                //context.Employees.Attach(employee);
-                context.SaveChanges();
-            }
+            var employee = RepositoryBase<EntityModel.Employee>.GetById(empId);
+            employee.Name = txt_Name.Text;
+            employee.Address = txt_Address.Text;
+            employee.Phone = txt_Phone.Text;
+            employee.BirthDate = DateTime.Now;
+            employee.HireDate = DateTime.Now;
+            employee.departmentId = int.Parse(dept.SelectedValue.ToString());
+            employee.ModifiedBy = userSession.Id;
+            employee.ModifiedDate = DateTime.Now;
+
+            RepositoryBase<EntityModel.Employee>.Update(employee);
             LoadEmployeeDataAndFillGridView();
             ResetControls();
         }
@@ -166,12 +127,10 @@ namespace Raya.Employee.Forms
         protected void Delete_Click(object sender, EventArgs e)
         {
             int empId = int.Parse(EmpId.Text.ToString());
-            using (context = new EmployeeContext())
-            {
-                var employee = context.Employees.Find(empId);               
-                context.Employees.Remove(employee);
-                context.SaveChanges();
-            }
+            var employee = RepositoryBase<EntityModel.Employee>.GetById(empId);
+            if (employee == null)
+                return;
+            RepositoryBase < EntityModel.Employee >.Delete(employee);
             LoadEmployeeDataAndFillGridView();
             ResetControls();
         }
@@ -179,12 +138,9 @@ namespace Raya.Employee.Forms
         protected void Confirm_Click(object sender, EventArgs e)
         {
             int empId = int.Parse(EmpId.Text);
-            using (context = new EmployeeContext())
-            {
-                var employee = context.Employees.Find(empId);
-                employee.Confirmed = true;
-                context.SaveChanges();
-            }
+            var employee = RepositoryBase<EntityModel.Employee>.GetById(empId);
+            employee.Confirmed = true;
+            RepositoryBase< EntityModel.Employee >.Update(employee);
             LoadEmployeeDataAndFillGridView();
             ResetControls();
         }
