@@ -26,6 +26,12 @@ namespace Raya.Employee.Repository
             context.SaveChanges();
             return Entity;
         }
+        public static void AddRange(List<T> Entities)
+        {
+            context.Set<T>().AddRange(Entities);
+            context.SaveChanges();
+
+        }
         public static T Update(T Entity)
         {
             context.SaveChanges();

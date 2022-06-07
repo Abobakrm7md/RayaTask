@@ -5,7 +5,7 @@
     <div class="jumbotron" style="align-content:center;align-items:center;text-align:center">
         <h1>Raya Trad</h1>
         <p class="lead">Wellcom to raya </p>
-        <img  style="width:70%; height:300px" src="Content/Images/raya2.jpg" />
+        <img  style="width:70%; height:200px" src="Content/Images/logo.png" />
     </div>
 
 

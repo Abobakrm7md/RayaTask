@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using log4net;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -15,10 +16,9 @@ namespace Raya.Employee.Forms
 {
     public partial class Login : System.Web.UI.Page
     {
-
+        ILog logger = LogManager.GetLogger("ErrorLog");
         protected void Page_Load(object sender, EventArgs e)
         {
-            
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
