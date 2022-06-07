@@ -1,12 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+using Raya.Employee.ApplicationGlobal;
 using Raya.Employee.EntityModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Raya.Employee.Forms
 {
@@ -36,7 +31,7 @@ namespace Raya.Employee.Forms
                     user.PasswordHash = hasher.HashPassword(txtPassword.Text);
                     context.Users.Add(user);
                     context.SaveChanges();
-                    Response.Redirect("~/Forms/Login.aspx");
+                    Response.Redirect(ApplicationUrls.Login);
                 }
             }
             catch (Exception ex)

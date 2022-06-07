@@ -1,11 +1,7 @@
-﻿using Raya.Employee.EntityModel;
-using Raya.Employee.Models;
+﻿using Raya.Employee.ApplicationGlobal;
+using Raya.Employee.EntityModel;
 using Raya.Employee.Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Raya.Employee.Forms
@@ -25,7 +21,7 @@ namespace Raya.Employee.Forms
         private void ValidateUserTypeToDisableEnableControls()
         {
             ApplicationUser userSession = (ApplicationUser)Session["user"];
-            if(userSession == null) { Response.Redirect("~/Forms/Login.aspx"); }
+            if(userSession == null) { Response.Redirect(ApplicationUrls.Login); }
             if (userSession.IsAdmin) { Confirm.Visible = true; }
             else { Confirm.Visible = false; 
                }
@@ -59,7 +55,7 @@ namespace Raya.Employee.Forms
             //init employee 
             ApplicationUser userSession = (ApplicationUser)Session["user"];
             if(userSession == null)
-                Response.Redirect("~/Forms/Login.aspx");
+                Response.Redirect(ApplicationUrls.Login);
             var emp = new EntityModel.Employee()
             {
                 Name = txt_Name.Text,

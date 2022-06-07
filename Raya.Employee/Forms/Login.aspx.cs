@@ -1,16 +1,9 @@
 ﻿using log4net;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using Raya.Employee.EntityModel;
+using Raya.Employee.ApplicationGlobal;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Raya.Employee.Forms
 {
@@ -33,7 +26,7 @@ namespace Raya.Employee.Forms
                     if (validatePassword == PasswordVerificationResult.Success)
                     {
                         HttpContext.Current.Session.Add("user", user);
-                        Response.Redirect("~/Forms/Employees.aspx");
+                        Response.Redirect(ApplicationUrls.Employee);
                     }
                 }
 

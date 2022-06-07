@@ -361,6 +361,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ApplicationGlobal\ApplicationUrls.cs" />
     <Compile Include="Migrations\202206021850058_init.cs" />
     <Compile Include="Migrations\202206021850058_init.designer.cs">
       <DependentUpon>202206021850058_init.cs</DependentUpon>

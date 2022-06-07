@@ -1,11 +1,7 @@
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Raya.Employee.EntityConfigurations;
 using Raya.Employee.EntityModel;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
 
 namespace Raya.Employee
 {

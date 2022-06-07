@@ -1,4 +1,5 @@
 ﻿using log4net;
+using Raya.Employee.ApplicationGlobal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace Raya.Employee
             logger.Error(ex);
             Server.ClearError();
 
-            Response.Redirect("~/Forms/Errors/Error.aspx");
+            Response.Redirect(ApplicationUrls.Error);
         }
     }
 }
